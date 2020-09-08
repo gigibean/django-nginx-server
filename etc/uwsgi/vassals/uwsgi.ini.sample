@@ -1,7 +1,7 @@
 [uwsgi]
 uid = user_name
 base = /home/%(uid)/main_dir
-root /home/gomj/main_dir/dir1/project_dir
+root /home/%(uid)/main_dir/dir1/project_dir
 home = %(base)/myvenv
 chdir = %(base)/dir1/proejct_dir
 uwsgi-file = %(chdir)/proejct_dir/wsgi.py
@@ -16,7 +16,7 @@ socket = %(base)/dir2/uwsgi.sock
 chmod-socket = 666
 vacuum = True
 pidfile = /tmp/emperor.pid
-deamonize = /home/user_dir/main_dir/dir2/emperor.log
+deamonize = /home/%(uid)/main_dir/dir2/emperor.log
 ;This is Emperor mode
 ;If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.
 ;Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name
