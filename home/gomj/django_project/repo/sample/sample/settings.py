@@ -73,6 +73,8 @@ WSGI_APPLICATION = 'sample.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# MySQL DataBase
+
 
 DATABASES = {
     'default': {
@@ -123,6 +125,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# STATIC_URL is a URL to use when referring to static files located in STATIC_ROOT.
+# Example: '/static/' or 'http://static.example.com'
+# You can define STATIC_URL as a subdomain and use it in the template
+# STATIC URL == un accessable url in the web
+
+# STATIC_ROOT is the absolute path to the directory where collectstatic will collect static files
+# for deployment
+# And also you can use other domains(server) that contain static or media files 
+
+# ROOT is just the path to the dir where static files have been collected
+# URL is the URL which will serve those static files
+# And since fref starts with '/' it will append your domain to access the static files
 
 STATIC_URL = '/static/'
 STATIC_ROOT = sample.static_root
