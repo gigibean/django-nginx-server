@@ -21,4 +21,5 @@ baseurl = https://downloads.mariadb.com/Tools/rhel/$releasever/$basearch
 gpgkey = file:///etc/pki/rpm-gpg/MariaDB-Enterprise-GPG-KEY
 gpgcheck = 1
 enabled = 1
-
+# You have to write this repository before you install MariaDB
+# This repo is about MariaDB's version and tools
