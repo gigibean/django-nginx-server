@@ -1,0 +1,22 @@
+[uwsgi]
+uid = user_name
+base = /home/%(uid)/main_dir
+root /home/user_name/main_dir/dir1/project_dir
+home = %(base)/myvenv
+chdir = %(base)/dir1/proejct_dir
+uwsgi-file = %(chdir)/app_dir/wsgi.py
+module = app_dir.wsgi:application
+env = DJANGO_SETTINGS_MODULE=app_dir.settings
+callable = application
+master = true
+processes = 5
+pidfile=/tmp/sample_master.pid
+socket = %(base)/dir2/uwsgi.sock
+chmod-socket = 666
+vacuum = true
+deamonize = /home/user_dir/main_dir/dir2/sample.log
+;This is uwsgi default mode not emperor
+;It is possible to create and run config files with general user accounts
+;Start or Stop commands are supposed to be executed in project directory
+;Start command: uwsgi --ini uwsgi.ini
+;Stop command: uwsgi --stop /tmp/sample_master.pid

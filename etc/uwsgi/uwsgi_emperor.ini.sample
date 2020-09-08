@@ -1,0 +1,8 @@
+[uwsgi]
+emperor = /etc/uwsgi/vassals
+uid = user_name
+gid = group_name
+master =True
+pidfile = /tmp/emperor.pid
+vacuum = Ture
+daemonize = /var/log/uwsgi/emperor.log

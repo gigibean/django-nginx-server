@@ -1,0 +1,18 @@
+upstream django {
+   server unix:/home/user_dir/main_dir/dir2/uwsgi.sock;
+}
+server {
+        listen 80;
+        server_name your_domain_or_ip;
+        charset utf-8;
+        # location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+                alias /var/www/your_domain_or_ip/static/;
+		# alias /your_project_folder/static/;
+        }
+        location / {
+            include /home/user_dir/main_dir/dir1/proejct_dir/uwsgi_params;
+            uwsgi_pass      django;
+        }
+}
+
