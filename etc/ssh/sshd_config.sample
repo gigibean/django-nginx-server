@@ -146,3 +146,7 @@ Match User user_name
     PasswordAuthentication yes
     ChrootDirectory /home/user_dir
 
+# Edit process
+# First: change Subsystem sftp from '/usr/libexec/openssh/sftp_server' to 'internal-sftp'
+# Second: Add rules for users and groups
+# Default sftp port num is 22
