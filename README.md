@@ -294,7 +294,7 @@ If you have emperor_wusgi.ini file,
 
 Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name		 		
   
-If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process	
+If you feel like Start command's options are too many and command is too long, then you can make *.ini file about Emperor process	
 
 ```shell
 $ cd /etc/uwsgi
