@@ -6,7 +6,7 @@ yum update && yum update wget
 ```
 
 1. Install Python35
-===================
+=============
 ```
 $ yum install zlib-devel-y
 $ yum install xz
@@ -20,14 +20,14 @@ $ make && make altinstall
 $ python3.5 --version
 ```
 2. Install pip3
-===============
+=============
 ```
 $ curl -k -O https://bootstrap.pypa.io/get-pip.py
 $ python3.5 get-pip.py
 ```
 
 3. Install django
-=================
+=============
 ```
 $ pip3 install Django==2.2.16
 $ python3.5
@@ -36,7 +36,7 @@ $ python3.5
 ```
 
 4. Install MariaDB
-==================
+=============
 ```
 $ /etc/yum.repo.d/
 $ vi MariaDB.repo
@@ -117,7 +117,7 @@ $ mysql_secure_installation
 > Reload privilege tables now? [Y/n] Y
 ```
 5. Install mysqlclient
-======================
+=============
 ```
 $ yum search python35 | grep devel
 # Download python35 + devel
@@ -138,7 +138,7 @@ $ sudo pip install mysqlclient
 ```
 
 6. Set mysql
-================
+=============
 ```
 $ mysql -u root -p
 > Enter password: 
@@ -150,7 +150,7 @@ $ mysql -u root -p
 ```
 
 7. Install nginx
-================
+=============
 ```
 $ vi /etc/yum.repo.d/nginx.repo
 [nginx]
@@ -167,13 +167,13 @@ $ chkconfig nginx on #systemctl enabl nginx
 $ service nginx restart # systemctl restart nginx
 ```
 8. Install uwsgi
-================
+=============
 ```
 $ pip3 install uwsgi
 ```
 
 9. Set user&group
-================
+=============
 ```
 $ groupadd group_name
 $ grep group_name /etc/group
@@ -184,7 +184,7 @@ $ cat /etc/passwd
 ```
 
 10. make django project
-======================
+=============
 ```
 $ cd /home/user_name
 $ mkdir main_project
@@ -216,6 +216,7 @@ MEDIA_ROOT = "/var/www/you_domain/media/"
 ```
 11. Set nginx
 =============
+```
 $ cd /etc/nginx/conf.d/nginx.conf
 $ mv default.conf default.conf.ogirinal
 $ vi naignx.conf
@@ -239,13 +240,15 @@ server {
 ```
 
 12. Set uwsgi
-============
+=============
 There are two modes in `uwsgi`: Emperor mode and Default(General) mode
 The Emperor mode is to run server as a whole computer is one server
 Contrary, The Default(General) mode is to run server as django applications are each server
-The uWSGI program(both modes) also supports the UDS method 
+The uWSGI program(both modes) also supports the UDS method	
+
 Emperor mode
 -------------
+
 ```
 $ /etc/re.d/init.d/uwsgi
 $ mkdir -p /etc/uwsgi/vassals
@@ -290,10 +293,11 @@ vacuum = Ture
 daemonize = /var/log/uwsgi/emperor.log
 ```
 Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini
-Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid
-
+Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid	
+		
 General(Default) mode
 ---------------------
+
 ````
 $ cd /home/user_name/main_project/dir2/
 $ vi uwsgi.ini
@@ -322,10 +326,12 @@ deamonize = /home/user_dir/main_dir/dir2/sample.log
 ```
 
 13. sftp
-========
+=============
+
 ```
 $ vi /etc/ssh/sshd_config
 ```
+
 ```
 # Chagne or type
 
@@ -350,7 +356,6 @@ $ service sshd start
 $ cd /home
 $ ls -al
 drwxr-xr-x   3 root group 4096 Sep  4 14:45 user_name(directory)
-
 ```
 
 
