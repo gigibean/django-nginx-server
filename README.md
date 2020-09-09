@@ -4,9 +4,9 @@ Integrating django app with nginx
 ```
 yum update && yum update wget
 ```
-
-1. Install Python35
-=============
+		
+1. Install Python35	
+=============	
 ```
 $ yum install zlib-devel-y
 $ yum install xz
@@ -19,24 +19,25 @@ $ ./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local
 $ make && make altinstall
 $ python3.5 --version
 ```
-2. Install pip3
-=============
+		
+2. Install pip3		
+=============		
 ```
 $ curl -k -O https://bootstrap.pypa.io/get-pip.py
 $ python3.5 get-pip.py
 ```
-
-3. Install django
-=============
+		
+3. Install django		
+=============		
 ```
 $ pip3 install Django==2.2.16
 $ python3.5
 > import django
 > print(django.get_version()) 
 ```
-
-4. Install MariaDB
-=============
+		
+4. Install MariaDB		
+=============		
 ```
 $ /etc/yum.repo.d/
 $ vi MariaDB.repo
@@ -116,8 +117,9 @@ $ mysql_secure_installation
 > Remove test database and access to it? [Y/n] Y
 > Reload privilege tables now? [Y/n] Y
 ```
-5. Install mysqlclient
-=============
+		
+5. Install mysqlclient		
+=============		
 ```
 $ yum search python35 | grep devel
 # Download python35 + devel
@@ -136,9 +138,9 @@ $ sudo rpm -Uvh sudo rpm -Uvh mysql80-community-release-el6-3.noarch.rpm
 $ sudo yum install mysql-community-devel.x86_64
 $ sudo pip install mysqlclient
 ```
-
-6. Set mysql
-=============
+		
+6. Set mysql		
+=============		
 ```
 $ mysql -u root -p
 > Enter password: 
@@ -148,9 +150,9 @@ $ mysql -u root -p
 > flush privileges;
 > exit
 ```
-
-7. Install nginx
-=============
+		
+7. Install nginx		
+=============		
 ```
 $ vi /etc/yum.repo.d/nginx.repo
 [nginx]
@@ -166,14 +168,15 @@ $ yum install nginx
 $ chkconfig nginx on #systemctl enabl nginx 
 $ service nginx restart # systemctl restart nginx
 ```
-8. Install uwsgi
-=============
+		
+8. Install uwsgi			
+=============		
 ```
 $ pip3 install uwsgi
 ```
-
-9. Set user&group
-=============
+		
+9. Set user&group				
+=============			
 ```
 $ groupadd group_name
 $ grep group_name /etc/group
@@ -182,9 +185,9 @@ $ useradd -g group_name -s /sbin/nologin -p 'password' user_name
 $ echo 'password' passwd --stdln user_name
 $ cat /etc/passwd
 ```
-
-10. make django project
-=============
+			
+10. make django project		
+=============		
 ```
 $ cd /home/user_name
 $ mkdir main_project
@@ -214,8 +217,9 @@ STATIC_ROOT = "/var/www/your_domain/static/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = "/var/www/you_domain/media/"
 ```
-11. Set nginx
-=============
+		
+11. Set nginx		
+=============		
 ```
 $ cd /etc/nginx/conf.d/nginx.conf
 $ mv default.conf default.conf.ogirinal
@@ -238,17 +242,17 @@ server {
         }
 }
 ```
-
-12. Set uwsgi
-=============
+		
+12. Set uwsgi		
+=============		
 There are two modes in `uwsgi`: Emperor mode and Default(General) mode
 The Emperor mode is to run server as a whole computer is one server
 Contrary, The Default(General) mode is to run server as django applications are each server
 The uWSGI program(both modes) also supports the UDS method	
 
-Emperor mode
--------------
-
+Emperor mode		
+-------------		
+	
 ```
 $ /etc/re.d/init.d/uwsgi
 $ mkdir -p /etc/uwsgi/vassals
@@ -294,10 +298,10 @@ daemonize = /var/log/uwsgi/emperor.log
 ```
 Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini
 Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid	
-		
-General(Default) mode
+			
+General(Default) mode		
 ---------------------
-
+		
 ````
 $ cd /home/user_name/main_project/dir2/
 $ vi uwsgi.ini
@@ -324,10 +328,10 @@ deamonize = /home/user_dir/main_dir/dir2/sample.log
 ;Start command: uwsgi --ini dir2/uwsgi.ini
 ;Stop command: uwsgi --stop /tmp/sample_master.pid
 ```
-
-13. sftp
-=============
-
+		
+13. sftp		
+=============		
+		
 ```
 $ vi /etc/ssh/sshd_config
 ```
