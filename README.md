@@ -280,9 +280,13 @@ pidfile = /tmp/emperor.pid
 deamonize = /home/%(uid)/main_dir/dir2/emperor.log
 ```
 This is Emperor mode		
+
 If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.	 	
+
 Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name		 
+
 If you have emperor_wusgi.ini file,		 
+
 Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name		 		
   
 If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process		
@@ -299,6 +303,7 @@ vacuum = Ture
 daemonize = /var/log/uwsgi/emperor.log
 ```
 Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini	 	
+
 Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid		 	
 			
 General(Default) mode		
