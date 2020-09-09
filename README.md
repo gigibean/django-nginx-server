@@ -247,10 +247,14 @@ server {
 		
 ## 12. Set uwsgi		
 		
-There are two modes in `uwsgi`: Emperor mode and Default(General) mode	    		
+There are two modes in `uwsgi`: Emperor mode and Default(General) mode	  
+
 The Emperor mode is to run server as a whole computer is one server   
+
 Contrary, The Default(General) mode is to run server as django applications are each server	 	
+
 The uWSGI program(both modes) also supports the UDS method		 	
+
 	
 Emperor mode		
 -------------		
