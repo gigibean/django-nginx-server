@@ -247,10 +247,10 @@ server {
 		
 ## 12. Set uwsgi		
 		
-There are two modes in `uwsgi`: Emperor mode and Default(General) mode			
-The Emperor mode is to run server as a whole computer is one server			
-Contrary, The Default(General) mode is to run server as django applications are each server		
-The uWSGI program(both modes) also supports the UDS method			
+There are two modes in `uwsgi`: Emperor mode and Default(General) mode	    		
+The Emperor mode is to run server as a whole computer is one server   
+Contrary, The Default(General) mode is to run server as django applications are each server	 	
+The uWSGI program(both modes) also supports the UDS method		 	
 	
 Emperor mode		
 -------------		
@@ -280,11 +280,11 @@ pidfile = /tmp/emperor.pid
 deamonize = /home/%(uid)/main_dir/dir2/emperor.log
 ```
 This is Emperor mode		
-If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.		
-Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name		
-If you have emperor_wusgi.ini file,		
-Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name				
-
+If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.	 	
+Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name		 
+If you have emperor_wusgi.ini file,		 
+Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name		 		
+  
 If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process		
 ```
 cd /etc/uwsgi
@@ -298,8 +298,8 @@ pidfile = /tmp/emperor.pid
 vacuum = Ture
 daemonize = /var/log/uwsgi/emperor.log
 ```
-Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini		
-Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid			
+Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini	 	
+Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid		 	
 			
 General(Default) mode		
 ---------------------
@@ -341,7 +341,7 @@ $ vi /etc/ssh/sshd_config
 ```
 # Chagne or type
 
-#Subsystem sftp /usr/libexec/opnssh/sftp-server 
+#Subsystem sftp /usr/libexec/opnssh/sftp-server  
 Subsystem sftp internal -sftp
 
 Match Group group_name
