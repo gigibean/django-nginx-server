@@ -1,13 +1,13 @@
 # django nginx server
 Integrating django app with nginx
 
-```
+```shell
 yum update && yum update wget
 ```
 		
 ## 1. Install Python35	
 
-```
+```shell
 $ yum install zlib-devel-y
 $ yum install xz
 $ yum install openssl openssl-devel-y
@@ -22,14 +22,14 @@ $ python3.5 --version
 		
 ## 2. Install pip3		
 		
-```
+```shell
 $ curl -k -O https://bootstrap.pypa.io/get-pip.py
 $ python3.5 get-pip.py
 ```
 		
 ## 3. Install django		
 		
-```
+```shell
 $ pip3 install Django==2.2.16
 $ python3.5
 > import django
@@ -38,7 +38,7 @@ $ python3.5
 		
 ## 4. Install MariaDB		
 		
-```
+```shell
 $ /etc/yum.repo.d/
 $ vi MariaDB.repo
 
@@ -85,7 +85,7 @@ $ rm -rf /ver/cache/yum/*
 # Delete mysql-server to avoid crash
 $ rpm -qa | grep -i '^mysql-'
 # If you find 'mysql-sever-(numbers)'
-$ rpm --nodeps -ev mysql-server-(numbers)'
+$ rpm --nodeps -ev mysql-server-(numbers)
 
 $ yum install MariaDB-server
 $ yum install mysql
@@ -121,7 +121,7 @@ $ mysql_secure_installation
 		
 ## 5. Install mysqlclient		
 		
-```
+```shell
 $ yum search python35 | grep devel
 # Download python35 + devel
 $ yum install  rh-python35-python-devel.x86_64  rh-python35-scldevel.x86_64
@@ -143,7 +143,7 @@ $ sudo pip install mysqlclient
 		
 ## 6. Set mysql		
 		
-```
+```shell
 $ mysql -u root -p
 > Enter password: 
 > create database db_name
@@ -155,7 +155,7 @@ $ mysql -u root -p
 		
 ## 7. Install nginx		
 		
-```
+```shell
 $ vi /etc/yum.repo.d/nginx.repo
 [nginx]
 name=nginx repo
@@ -173,13 +173,13 @@ $ service nginx restart # systemctl restart nginx
 		
 ## 8. Install uwsgi			
 		
-```
+```shell
 $ pip3 install uwsgi
 ```
 		
 ## 9. Set user&group				
 			
-```
+```shell
 $ groupadd group_name
 $ grep group_name /etc/group
 
@@ -190,7 +190,7 @@ $ cat /etc/passwd
 			
 ## 10. make django project		
 		
-```
+```shell
 $ cd /home/user_name
 $ mkdir main_project
 $ cd main_proejct
@@ -222,7 +222,7 @@ MEDIA_ROOT = "/var/www/you_domain/media/"
 		
 ## 11. Set nginx		
 	
-```
+```shell
 $ cd /etc/nginx/conf.d/nginx.conf
 $ mv default.conf default.conf.ogirinal
 $ vi naignx.conf
@@ -292,7 +292,7 @@ Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals -
   
 If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process	
 
-```
+```shell
 $ cd /etc/uwsgi
 $ vi uwsgi_emperor.ini
 [uwsgi]
@@ -311,7 +311,7 @@ Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid
 General(Default) mode		
 ---------------------
 		
-````
+```
 $ cd /home/user_name/main_project/dir2/
 $ vi uwsgi.ini
 [uwsgi]
@@ -341,7 +341,7 @@ deamonize = /home/user_dir/main_dir/dir2/sample.log
 ## 13. sftp		
 	
 		
-```
+```shell
 $ vi /etc/ssh/sshd_config
 ```
 
@@ -361,7 +361,7 @@ Match User user_name
     ChrootDirectory /home/user_dir
 ```
 
-```
+```shell
 $ chown -R user_name.group_name /home/usr_name
 $ chown root.group_name /home/user_name
 $ chmod -R 755 /home/user_name
