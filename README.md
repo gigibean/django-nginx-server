@@ -14,7 +14,7 @@ $ yum install openssl openssl-devel-y
 $ wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
 $ xz -d Python-3.5.1.tar.xz
 $ tar -xvf Python-3.5.1.tar
-$ cd Python<F4-3.5.1.tar.xz
+$ cd Python-3.5.1.tar.xz
 $ ./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
 $ make && make altinstall
 $ python3.5 --version
