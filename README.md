@@ -5,8 +5,8 @@ Integrating django app with nginx
 yum update && yum update wget
 ```
 		
-1. Install Python35	
-=============	
+## 1. Install Python35	
+
 ```
 $ yum install zlib-devel-y
 $ yum install xz
@@ -20,15 +20,15 @@ $ make && make altinstall
 $ python3.5 --version
 ```
 		
-2. Install pip3		
-=============		
+## 2. Install pip3		
+		
 ```
 $ curl -k -O https://bootstrap.pypa.io/get-pip.py
 $ python3.5 get-pip.py
 ```
 		
-3. Install django		
-=============		
+## 3. Install django		
+		
 ```
 $ pip3 install Django==2.2.16
 $ python3.5
@@ -36,8 +36,8 @@ $ python3.5
 > print(django.get_version()) 
 ```
 		
-4. Install MariaDB		
-=============		
+## 4. Install MariaDB		
+		
 ```
 $ /etc/yum.repo.d/
 $ vi MariaDB.repo
@@ -118,8 +118,8 @@ $ mysql_secure_installation
 > Reload privilege tables now? [Y/n] Y
 ```
 		
-5. Install mysqlclient		
-=============		
+## 5. Install mysqlclient		
+		
 ```
 $ yum search python35 | grep devel
 # Download python35 + devel
@@ -139,8 +139,8 @@ $ sudo yum install mysql-community-devel.x86_64
 $ sudo pip install mysqlclient
 ```
 		
-6. Set mysql		
-=============		
+## 6. Set mysql		
+		
 ```
 $ mysql -u root -p
 > Enter password: 
@@ -151,8 +151,8 @@ $ mysql -u root -p
 > exit
 ```
 		
-7. Install nginx		
-=============		
+## 7. Install nginx		
+		
 ```
 $ vi /etc/yum.repo.d/nginx.repo
 [nginx]
@@ -169,14 +169,14 @@ $ chkconfig nginx on #systemctl enabl nginx
 $ service nginx restart # systemctl restart nginx
 ```
 		
-8. Install uwsgi			
-=============		
+## 8. Install uwsgi			
+		
 ```
 $ pip3 install uwsgi
 ```
 		
-9. Set user&group				
-=============			
+## 9. Set user&group				
+			
 ```
 $ groupadd group_name
 $ grep group_name /etc/group
@@ -186,8 +186,8 @@ $ echo 'password' passwd --stdln user_name
 $ cat /etc/passwd
 ```
 			
-10. make django project		
-=============		
+## 10. make django project		
+		
 ```
 $ cd /home/user_name
 $ mkdir main_project
@@ -218,8 +218,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = "/var/www/you_domain/media/"
 ```
 		
-11. Set nginx		
-=============		
+## 11. Set nginx		
+	
 ```
 $ cd /etc/nginx/conf.d/nginx.conf
 $ mv default.conf default.conf.ogirinal
@@ -243,8 +243,8 @@ server {
 }
 ```
 		
-12. Set uwsgi		
-=============		
+## 12. Set uwsgi		
+		
 There are two modes in `uwsgi`: Emperor mode and Default(General) mode
 The Emperor mode is to run server as a whole computer is one server
 Contrary, The Default(General) mode is to run server as django applications are each server
@@ -329,8 +329,8 @@ deamonize = /home/user_dir/main_dir/dir2/sample.log
 ;Stop command: uwsgi --stop /tmp/sample_master.pid
 ```
 		
-13. sftp		
-=============		
+## 13. sftp		
+	
 		
 ```
 $ vi /etc/ssh/sshd_config
