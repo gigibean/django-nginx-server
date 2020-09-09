@@ -47,7 +47,8 @@ $ vi MariaDB.repo
 # And this command make a file named 'mariadb.repo' in /etc/yum.repo.d/
 # So Change this file name 'mariadb.repo' to 'MariaDB.repo' if you need 
 # But this command allowed to download version 10.5 that is not supported in my os version
-# Otherwise, you enter the url: 'https://downloads.mariadb.org/mariadb/repositories/#distro=CentOS&distro_release=centos6-amd64--centos6&mirror=harukasan&version=10.3'
+# Otherwise, you enter the url: 
+# 'https://downloads.mariadb.org/mariadb/repositories/#distro=CentOS&distro_release=centos6-amd64--centos6&mirror=harukasan&version=10.3'
 # and choose a version that fits your OS version and specification
 
 # MariaDB 10.3 CentOS repository list - created 2020-09-04 02:11 UTC
@@ -131,7 +132,8 @@ $ yum list installed | grep mariadb
 $ sudo yum erase MariaDB-devel.x84_64
 
 # Add MySQL repository in yum
-# Go to https://dev.mysql.com/downloads/repo/yum/ and select the RPM file for your CentOS (for me, I choose "Red Hat Enterprise Linux 6 / Oracle Linux 6 (Architecture Independent), RPM Package"
+# Go to https://dev.mysql.com/downloads/repo/yum/ and select the RPM file for your CentOS 
+# (for me, I choose "Red Hat Enterprise Linux 6 / Oracle Linux 6 (Architecture Independent), RPM Package"
 # Go to you terminal and type:
 $ wget  wget https://dev.mysql.com/get/mysql80-community-release-el6-3.noarch.rpm
 $ sudo rpm -Uvh sudo rpm -Uvh mysql80-community-release-el6-3.noarch.rpm
@@ -245,11 +247,11 @@ server {
 		
 ## 12. Set uwsgi		
 		
-There are two modes in `uwsgi`: Emperor mode and Default(General) mode
-The Emperor mode is to run server as a whole computer is one server
-Contrary, The Default(General) mode is to run server as django applications are each server
-The uWSGI program(both modes) also supports the UDS method	
-
+There are two modes in `uwsgi`: Emperor mode and Default(General) mode			
+The Emperor mode is to run server as a whole computer is one server			
+Contrary, The Default(General) mode is to run server as django applications are each server		
+The uWSGI program(both modes) also supports the UDS method			
+	
 Emperor mode		
 -------------		
 	
@@ -277,13 +279,13 @@ vacuum = True
 pidfile = /tmp/emperor.pid
 deamonize = /home/%(uid)/main_dir/dir2/emperor.log
 ```
-This is Emperor mode
-If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.
-Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name
-If you have emperor_wusgi.ini file, 
-Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name
+This is Emperor mode		
+If you need to deploy a big number of apps on a single server, or a group of servers, the Emperor mode is just the ticket.		
+Start command: sudo uwsgi --emperor /etc/wusgi/vassals --uid user_name gid group_name		
+If you have emperor_wusgi.ini file,		
+Start command: sudo nginx -s reload && sudo uwsgi --emperor /etc/uwsgi/vassals --uid user_name --gid group_name				
 
-If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process
+If you feel like Start command's options are too many and command is too long, tnen you can make *.ini file about Emperor process		
 ```
 cd /etc/uwsgi
 vi uwsgi_emperor.ini
@@ -296,8 +298,8 @@ pidfile = /tmp/emperor.pid
 vacuum = Ture
 daemonize = /var/log/uwsgi/emperor.log
 ```
-Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini
-Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid	
+Start command: sudo nginx -s reload && sudo uwsgi --ini /etc/uwsgi/uwsgi_emperor.ini		
+Stop command: sudo nginx -s stop && sudo uwsgi --stop /tmp/emperor.pid			
 			
 General(Default) mode		
 ---------------------
