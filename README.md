@@ -184,7 +184,7 @@ $ groupadd group_name
 $ grep group_name /etc/group
 
 $ useradd -g group_name -s /sbin/nologin -p 'password' user_name
-$ echo 'password' | passwd --stdln user_name
+$ echo 'password' | passwd --stdin user_name
 $ cat /etc/passwd
 ```
 			
