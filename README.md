@@ -135,8 +135,8 @@ $ sudo yum erase MariaDB-devel.x84_64
 # Go to https://dev.mysql.com/downloads/repo/yum/ and select the RPM file for your CentOS 
 # (for me, I choose "Red Hat Enterprise Linux 6 / Oracle Linux 6 (Architecture Independent), RPM Package"
 # Go to you terminal and type:
-$ wget  wget https://dev.mysql.com/get/mysql80-community-release-el6-3.noarch.rpm
-$ sudo rpm -Uvh sudo rpm -Uvh mysql80-community-release-el6-3.noarch.rpm
+$ wget https://dev.mysql.com/get/mysql80-community-release-el6-3.noarch.rpm
+$ sudo rpm -Uvh mysql80-community-release-el6-3.noarch.rpm
 $ sudo yum install mysql-community-devel.x86_64
 $ sudo pip install mysqlclient
 ```
@@ -184,7 +184,7 @@ $ groupadd group_name
 $ grep group_name /etc/group
 
 $ useradd -g group_name -s /sbin/nologin -p 'password' user_name
-$ echo 'password' passwd --stdln user_name
+$ echo 'password' | passwd --stdln user_name
 $ cat /etc/passwd
 ```
 			
@@ -200,7 +200,7 @@ $ source myvenv/bin/activate
 $ mkdir dir1 dir2
 $ cd dir1
 $ django-admin.py startproejct sample
-$ cd dir1/sample/sample
+$ cd sample/sample
 $ vi settings.py
 ALLOWED_HOSTS = ['your_domain', 'your_ip']
 DATABASES = {
@@ -225,6 +225,7 @@ MEDIA_ROOT = "/var/www/you_domain/media/"
 ```shell
 $ cd /etc/nginx/conf.d/nginx.conf
 $ mv default.conf default.conf.ogirinal
+$ cp /etc/nginx/uwsgi_params /home/user_name/main_dir/dir1/project_dir/uwsgi_params
 $ vi naignx.conf
 upstream django {
    server unix:/home/user_dir/main_dir/dir2/uwsgi.sock;
@@ -268,10 +269,10 @@ uid = user_name
 base = /home/%(uid)/main_dir
 root /home/%(uid)/main_dir/dir1/project_dir
 home = %(base)/myvenv
-chdir = %(base)/dir1/proejct_dir
-uwsgi-file = %(chdir)/proejct_dir/wsgi.py
-module = sample.wsgi:application
-env = DJANGO_SETTINGS_MODULE=sample.settings
+chdir = %(base)/dir1/app_dir
+uwsgi-file = %(chdir)/app_dir/wsgi.py
+module = app_dir.wsgi:application
+env = DJANGO_SETTINGS_MODULE=app_dir.settings
 callable = application
 master = True
 processes = 5
